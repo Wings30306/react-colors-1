@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.logo a {
+    text-decoration: none;
+}
+
 .slider .rc-slider-track {
     background-color: transparent;
 }
