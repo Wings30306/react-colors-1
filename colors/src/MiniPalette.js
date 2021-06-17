@@ -1,20 +1,51 @@
 import { withStyles } from "@material-ui/styles"
+import { Link } from "react-router-dom"
 
 const styles = {
-    main: {
-        backgroundColor: "purple",
-        border: "3px solid teal"
+    root: {
+        backgroundColor: "white",
+        border: "1px solid black",
+        borderRadius: "5px",
+        padding: "0.5rem",
+        position: "relative",
+        overflow: "hidden",
+        "&:hover": {
+            cursor: "pointer"
+        }
+    },
+    colors: {
+        backgroundColor: "grey"
+    },
+    title: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "0",
+        color: "black",
+        paddingTop: "0.5rem",
+        fontSize: "1rem",
+        position: "relative"
+    },
+    emoji: {
+        marginLeft: "0.5rem",
+        fontSize: "1.5rem"
     }
 }
 
 function MiniPalette(props) {
-    const {classes} = props;
+    const {classes, paletteName, id, emoji} = props;
     console.log(classes)
-    return(
-        <div className={classes.main}>
-            <h2>{props.palette.paletteName}</h2>
+    return(    
+        <div className={classes.root}>
+            <div className={classes.colors} />
+            <h5 className={classes.title}>
+                {paletteName}
+                <span>{emoji}</span>
+            </h5>
         </div>
     )
 }
 
 export default withStyles(styles)(MiniPalette)
+
+// TO BE CONTINUED - Video 190, 3:30
