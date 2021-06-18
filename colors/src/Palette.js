@@ -30,7 +30,8 @@ class Palette extends Component {
                 name={color.name} 
                 key={color.id}
                 id={color.id}
-                paletteId={id} />
+                paletteId={id}
+                showLink={true} />
         ))
         return (
             <div className="Palette">               

@@ -1,15 +1,34 @@
 import { Component } from "react";
-import { generatePalette } from "./colorHelpers";
-import seedColors from "./seedColors";
+import ColorBox from "./ColorBox";
 
 class SingleColorPalette extends Component {
+    constructor(props){
+        super(props)
+        this._shades = this.gatherShades(this.props.palette, this.props.colorId)
+    }
+
+    gatherShades(palette, colorId){
+        let shades = []
+        let allColors = palette.colors;
+        for(let key in allColors){
+            shades = shades.concat(
+                allColors[key].filter(color => color.id === colorId)
+            )
+        }
+        return shades.slice(1)
+    }
+
     render(){
-        const { paletteId, colorId } = this.props.match.params;
-        const colors = generatePalette(seedColors[paletteId]).map(color => color.id === colorId)
-        console.log(colors)
+        const { palette, colorId} = this.props
+        const colorBoxes = this._shades.map(color => (
+            <ColorBox key={color.id} name={color.name} color={color.hex} showLink={false} />
+        ))
         return (
-            <div>
-                <h1>SingleColorPalette for {this.props.match.params.paletteId} - {this.props.match.params.colorId}</h1>
+            <div className="Palette">
+                <h1>SingleColorPalette for {palette.paletteName} - {colorId}</h1>
+                <div className="Palette-colors">
+                    {colorBoxes}
+                </div>
             </div>
         )
     }
