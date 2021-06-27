@@ -122,3 +122,11 @@
     font-size: 2rem;
     font-weight: 100;
 }
+
+.light-text {
+    color: #fefefe;
+}
+
+.dark-text {
+    color: #00000050;
+}
