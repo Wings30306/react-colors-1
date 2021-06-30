@@ -1,4 +1,4 @@
-.ColorBox {
+/* .ColorBox {
     width: 20%;
     height: 25%;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
-}
+} */
 
 .SingleColorPalette .ColorBox {
     height: 50%
@@ -55,18 +55,6 @@
     color: black;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
-
-.see-more {
-    background: rgba(255, 255, 255, 0.3);
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    color: white;
-    width: 60px;
-    height: auto;
-    text-transform: uppercase;
-    text-align: center;
 }
 
 .copy-overlay {

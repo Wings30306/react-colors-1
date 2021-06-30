@@ -30,7 +30,11 @@ class SingleColorPalette extends Component {
     render(){
         const { palette } = this.props
         const colorBoxes = this._shades.map(color => (
-            <ColorBox key={color.name} name={color.name} color={color[this.state.format]} showLink={false} />
+            <ColorBox 
+                key={color.name} 
+                name={color.name} 
+                color={color[this.state.format]} 
+                showingFullPalette={false} />
         ))
         return (
             <div className="SingleColorPalette Palette">
