@@ -1,7 +1,6 @@
 import React from "react";
 import Delete from "@material-ui/icons/Delete"
 import { withStyles } from "@material-ui/styles";
-import { scale } from "chroma-js";
 
 const styles = {
     root: {
@@ -35,7 +34,7 @@ const styles = {
 }
 
 function DraggableColorBox(props){
-    const { classes, color } = props;
+    const { classes, color, handleClick } = props;
     return (
         <div 
             className={classes.root}
@@ -43,7 +42,9 @@ function DraggableColorBox(props){
             >
                 <div className={classes.boxContent}>
                     <span>{color.name}</span>
-                    <Delete className={classes.deleteIcon} />
+                    <Delete 
+                        className={classes.deleteIcon}
+                        onClick={handleClick} />
                 </div>
             
         </div>
