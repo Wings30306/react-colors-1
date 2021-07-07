@@ -59,7 +59,14 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    margin: "0 auto"
+  },
+  buttons:{
+    width: "100%"
+  },
+  button: {
+    width: "50%"
   }
 });
 
@@ -168,10 +175,17 @@ class NewPaletteForm extends Component {
           </div>
           <Divider />
           <div className={ classes.container }>
-            <Typography variant="h4">Add A Color</Typography>
+            <Typography variant="h4" gutterBottom>Add A Color</Typography>
             <div className={classes.buttons}>
-              <Button variant="contained" color="secondary" onClick={this.clearPalette}>Clear Palette</Button>
+              <Button 
+                className={classes.button} 
+                variant="contained" 
+                color="secondary" 
+                onClick={this.clearPalette}>
+                  Clear Palette
+              </Button>
               <Button
+                className={classes.button}
                 variant="contained"
                 color="primary"
                 disabled={paletteFull}
