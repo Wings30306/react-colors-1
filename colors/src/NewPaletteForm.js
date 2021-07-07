@@ -174,7 +174,7 @@ class NewPaletteForm extends Component {
 
   render() {
     const { classes, maxColors } = this.props;
-    const { open, colors } = this.state;
+    const { open, colors, currentColor, newPaletteName, newColorName } = this.state;
     const paletteFull = colors.length >= maxColors
 
     return (
@@ -201,7 +201,7 @@ class NewPaletteForm extends Component {
             </Typography>
             <ValidatorForm onSubmit={this.savePalette}>
               <TextValidator 
-                value={this.state.newPaletteName}
+                value={newPaletteName}
                 name="newPaletteName"
                 onChange={this.handleChange}
                 validators={["required", "isPaletteNameUnique"]}
@@ -239,12 +239,12 @@ class NewPaletteForm extends Component {
           </div>
           
           <ChromePicker 
-            color={this.state.currentColor}
+            color={currentColor}
             onChangeComplete={newColor => this.updateCurrentColor(newColor)}
           />
           <ValidatorForm onSubmit={this.addNewColor}>
             <TextValidator 
-              value={this.state.newColorName} 
+              value={newColorName} 
               onChange={this.handleChange}
               name="newColorName"
               validators={["required", "isColorNameUnique", "isColorUnique"]}
@@ -254,7 +254,7 @@ class NewPaletteForm extends Component {
               color="primary"
               disabled={paletteFull}
               type="submit" 
-              style={{backgroundColor: this.state.currentColor }}>
+              style={{backgroundColor: currentColor }}>
                 Add Color
             </Button>
           </ValidatorForm>
@@ -266,7 +266,7 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
           <DraggableColorList 
-            colors={this.state.colors}
+            colors={colors}
             removeColor={this.removeColor}
             axis="xy"
             onSortEnd={this.onSortEnd}/>
