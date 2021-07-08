@@ -7,6 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { DialogContentText } from "@material-ui/core";
+import { Picker } from "emoji-mart";
+import "emoji-mart/css/emoji-mart.css"
 
 class PaletteFormModal extends Component {
     constructor(props) {
@@ -15,8 +17,6 @@ class PaletteFormModal extends Component {
             open: true,
             newPaletteName: ""
         }
-        this.handleClickOpen = this.handleClickOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this)
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -33,16 +33,6 @@ class PaletteFormModal extends Component {
             )
         );
     }
-
-    handleClickOpen() {
-        this.setState({ open: true });
-    };
-
-    handleClose() {
-        this.setState({ open: false });
-    };
-
-
 
     render() {
         return (
@@ -69,9 +59,10 @@ class PaletteFormModal extends Component {
                             validators={["required", "isPaletteNameUnique"]}
                             errorMessages={["Enter Palette Name", "Name already used"]}
                         />
+                        <Picker />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.props.close} color="primary">
                             Cancel
                         </Button>
                         <Button variant='contained' color='primary' type='submit'>
