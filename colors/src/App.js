@@ -9,13 +9,15 @@ import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"))
     this.state = {
-      palettes: ColorArray
+      palettes: savedPalettes || ColorArray
     }
     this.savePalette = this.savePalette.bind(this);
     this.findPalette = this.findPalette.bind(this);
+    this.syncLocalStorage = this.syncLocalStorage.bind(this);
   }
 
   findPalette(id) {
@@ -24,37 +26,44 @@ class App extends Component {
     })
   }
 
-  savePalette(newPalette){
-    this.setState({palettes: [...this.state.palettes, newPalette]})
+  savePalette(newPalette) {
+    this.setState(
+      { palettes: [...this.state.palettes, newPalette] }, 
+      this.syncLocalStorage
+    )
+  }
+
+  syncLocalStorage() {
+    window.localStorage.setItem("palettes", JSON.stringify(this.state.palettes))
   }
 
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={(routeProps) => <PaletteList palettes={this.state.palettes} {...routeProps}/>} />
-          <Route 
+          <Route exact path="/" render={(routeProps) => <PaletteList palettes={this.state.palettes} {...routeProps} />} />
+          <Route
             exact
             path="/palette/new"
-            render={(routeProps) => <NewPaletteForm savePalette={this.savePalette} {...routeProps} palettes={this.state.palettes}/>}
+            render={(routeProps) => <NewPaletteForm savePalette={this.savePalette} {...routeProps} palettes={this.state.palettes} />}
           />
-          <Route 
-            exact 
-            path="/palette/:id" 
+          <Route
+            exact
+            path="/palette/:id"
             render={(routeProps) => (
-              <Palette 
+              <Palette
                 palette={generatePalette(
-                this.findPalette(routeProps.match.params.id))}
-              />)} 
+                  this.findPalette(routeProps.match.params.id))}
+              />)}
           />
-          <Route 
-            exact path="/palette/:paletteId/:colorId" 
+          <Route
+            exact path="/palette/:paletteId/:colorId"
             render={(routeProps) => (
-              <SingleColorPalette 
+              <SingleColorPalette
                 palette={generatePalette(
-                this.findPalette(routeProps.match.params.paletteId))}
+                  this.findPalette(routeProps.match.params.paletteId))}
                 colorId={routeProps.match.params.colorId}
-              />)}/>
+              />)} />
         </Switch>
 
       </div>
