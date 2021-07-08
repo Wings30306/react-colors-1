@@ -1,3 +1,4 @@
+import Delete from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/styles"
 import styles from "./styles/MiniPaletteStyles"
 
@@ -12,6 +13,9 @@ function MiniPalette(props) {
     ))
     return(    
         <div className={classes.root} onClick={props.handleClick}>
+            <div className={classes.delete}>
+                <Delete className={classes.deleteIcon}/>
+            </div>
             <div className={classes.colors}>{miniColorBoxes}</div>
             <h5 className={classes.title}>
                 {paletteName}
