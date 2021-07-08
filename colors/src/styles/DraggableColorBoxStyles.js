@@ -2,8 +2,7 @@ const styles = {
     root: {
         width: "20%",
         height: "25%",
-        margin: "0 auto",
-        marginBottom: "-4px",
+        margin: "0 0 -5px 0",
         display: "inline-block",
         position: "relative",
         cursor: "pointer",
