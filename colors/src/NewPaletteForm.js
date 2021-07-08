@@ -84,8 +84,11 @@ class NewPaletteForm extends Component {
   addRandomColor() {
     let colors = this.props.palettes[Math.floor(Math.random() * this.props.palettes.length)]["colors"]
     let randomColor = colors[Math.floor(Math.random() * colors.length)]
-    this.setState({ colors: [...this.state.colors, randomColor] })
-    // Can be improved - make sure no double colors!
+    if (!this.state.colors.includes(randomColor)){
+      this.setState({ colors: [...this.state.colors, randomColor] })
+    }
+    
+    // Can be improved - make sure no double colors! ---- DONE 08/07
   }
 
   render() {
