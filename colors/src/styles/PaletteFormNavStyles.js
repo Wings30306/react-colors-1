@@ -1,4 +1,5 @@
 import { drawerWidth } from "./NewPaletteFormStyles"
+import sizes from "./sizes"
 
 const styles = theme => ({
   root: {
@@ -23,8 +24,12 @@ const styles = theme => ({
     })
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20
+    marginLeft: "12px",
+    marginRight: "20px",
+    [sizes.down("xs")]: {
+      marginLeft: 0,
+      marginRight: 0
+    }
   },
   navBtns: {
     marginRight: "1rem",
@@ -34,6 +39,13 @@ const styles = theme => ({
       display: "inline-block",
       
     width: "fit-content"
+    },
+    [sizes.down("xs")]: {
+      marginRight: "0.2rem",
+      "& button": {
+        margin: 0,
+        padding: 0
+      }
     }
   }
 });
