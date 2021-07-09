@@ -3,7 +3,7 @@ import sizes from "./sizes";
 
 const styles = {
     ColorBox: {
-        width: "20%",
+        width: props => props.showingFullPalette ? "20%" : "20%",
         height: props => props.showingFullPalette ? "25%" : "50%",
         margin: "0 auto",
         marginBottom: "-4px",
@@ -14,15 +14,15 @@ const styles = {
             opacity: "1"
         },
         [sizes.down("lg")]: {
-            width: "25%",
-            height: props => props.showingFullPalette ? "20%" : "50%",
+            width: props => props.showingFullPalette ? "25%" : "33.33%",
+            height: props => props.showingFullPalette ? "20%" : "30%",
         },
         [sizes.down("md")]: {
-            width: "50%",
+            width: props => props.showingFullPalette ? "50%" : "50%",
             height: props => props.showingFullPalette ? "10%" : "20%",
         },
         [sizes.down("xs")]: {
-            width: "100%",
+            width: props => props.showingFullPalette ? "100%" : "100%",
             height: props => props.showingFullPalette ? "5%" : "10%",
         }
     },
@@ -109,7 +109,10 @@ const styles = {
             background: "rgba(255, 255, 255, 0.3)",
             width: "100%",
             textAlign: "center",
-            marginBottom: 0
+            marginBottom: 0,
+            [sizes.down("xs")]: {
+                fontSize: "3rem"
+            }
         },        
         "& p" : {
             fontSize: "2rem",
