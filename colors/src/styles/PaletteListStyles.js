@@ -1,9 +1,12 @@
-import sizes from "./sizes"
+import sizes from "./sizes";
+import bg from "./bg.svg"
 
 const styles = {
     root: {
         backgroundColor: "blue",
-        height: "100vh",
+        backgroundImage: `url(${bg})`,
+        // background by SVGBackgrounds.com
+        minHeight: "100vh",
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center"
